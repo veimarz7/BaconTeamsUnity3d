@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space)) // Cambia la condición a la tecla de espacio
             {
                 // Activa el trigger "Jump" en el Animator (si lo necesitas)
-
+              
 
                 // Aplica la fuerza de salto hacia arriba
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             canJump = true;
-
+          
         }
     }
     public void Sprint()
@@ -76,4 +76,5 @@ public class Player : MonoBehaviour
             moveSpeed /= 2;
         }
     }
+
 }
