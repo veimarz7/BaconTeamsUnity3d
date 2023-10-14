@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody rb;
+    // public Rigidbody Player2;
     public float moveSpeed = 5;
     public float jumpForce = 10f;
     public float alturaOriginal;
-
+    public AudioClip jump;
     public bool canJump = true;
+    public Animator animat;
 
     void Start()
     {
@@ -28,25 +30,29 @@ public class Player : MonoBehaviour
 
     void movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        // Movimiento del jugador
+        float x = Input.GetAxis("Vertical");
+        float z = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector3(x * moveSpeed, rb.velocity.y, z * moveSpeed);
+        // Invertir los sentidos
+        x = -x;
+        z = -z;
 
-        //agacharse :
-
+        // Asignar el movimiento al Rigidbody
+        rb.velocity = new Vector3(x * moveSpeed, rb.velocity.y, -z * moveSpeed);
 
     }
+
 
     void Jump()
     {
         if (canJump)
         {
-            if (Input.GetKeyDown(KeyCode.Space)) // Cambia la condición a la tecla de espacio
+            if (Input.GetKeyDown(KeyCode.L)) // Cambia la condición a la tecla de espacio
             {
                 // Activa el trigger "Jump" en el Animator (si lo necesitas)
-              
-
+                animat.SetBool("etet", true);
+                AudioManager.instance.PlaySound(jump);
                 // Aplica la fuerza de salto hacia arriba
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
@@ -60,7 +66,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             canJump = true;
-          
+            animat.SetBool("etet", false);
         }
     }
     public void Sprint()

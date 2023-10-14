@@ -24,7 +24,7 @@ public class Heatlh_Br : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             AumentarVida();
         }
