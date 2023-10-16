@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - WallDes
+  - green
+  - playerone
+  - playertwo
+  - Final
+  - FinalJungle
+  - carone
+  - cartwo
+  - heart
+  - thunder
   layers:
   - Default
   - TransparentFX
